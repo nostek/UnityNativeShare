@@ -26,8 +26,7 @@ public static class NativeShare
 			File.WriteAllBytes(imagePath, png);
 		}
 
-		//#if UNITY_EDITOR
-		#if false
+		#if UNITY_EDITOR
 		//Nothing
 		#elif UNITY_IOS
 		_CNativeShare(text, imagePath, url);
@@ -47,13 +46,13 @@ public static class NativeShare
 				if (url != null)
 				{
 					extraText = (extraText == null) ? url : extraText + " " + url;
-					htmlText = (htmltext == null) ? string.Format("<a href=\"{0}\">{0}</a>", url) : string.Format("{0} <a href=\"{1}\">{1}</a>", text, url);
+					htmlText = (htmlText == null) ? string.Format("<a href=\"{0}\">{0}</a>", url) : string.Format("{0} <a href=\"{1}\">{1}</a>", text, url);
 				}
 
-				if(extraText != null)
+				if (extraText != null)
 				{
 					intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_TEXT"), extraText);
-					intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_HTML_TEXT"), htmltext);
+					intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_HTML_TEXT"), htmlText);
 				}
 
 				if (imagePath != null)
