@@ -42,6 +42,8 @@
     
     UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:data applicationActivities:nil];
     
+    controller.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeAddToReadingList,UIActivityTypeOpenInIBooks];
+    
     [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:controller animated:YES completion:nil];
 }
 
